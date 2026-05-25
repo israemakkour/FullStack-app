@@ -9,8 +9,8 @@ import os
 
 load_dotenv()
 
-app = Flask(__name__, static_folder="../frontend/dist", static_url_path="/")
-
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+app = Flask(__name__, static_folder=os.path.join(BASE_DIR, "../frontend/dist"), static_url_path="/")
 CORS(app)
 
 app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "super-secret-key")
